@@ -1,15 +1,20 @@
 package model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.Objects;
 
 @Entity
 public class Equipamennto {
-   private Long idEquipameto;
-   private String tipoEquipamento
-   private String descricao;
-   private String estado;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEquipameto;
+    private String tipoEquipamento;
+    private String descricao;
+    private String estado;
 
     public Equipamennto(Long idEquipameto, String tipoEquipamento, String descricao, String estado) {
         this.idEquipameto = idEquipameto;
@@ -17,7 +22,9 @@ public class Equipamennto {
         this.descricao = descricao;
         this.estado = estado;
     }
-    public Equipamennto() {}
+
+    public Equipamennto() {
+    }
 
     @Override
     public boolean equals(Object o) {
