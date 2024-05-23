@@ -1,10 +1,8 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,12 +13,15 @@ public class Equipamennto {
     private String tipoEquipamento;
     private String descricao;
     private String estado;
+    @OneToMany(mappedBy = "equipamento")
+    private List<Manutencao> listaDemanutencoes;
 
-    public Equipamennto(Long idEquipameto, String tipoEquipamento, String descricao, String estado) {
+    public Equipamennto(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
         this.idEquipameto = idEquipameto;
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
         this.estado = estado;
+        this.listaDemanutencoes = listaDemanutencoes;
     }
 
     public Equipamennto() {
@@ -37,7 +38,8 @@ public class Equipamennto {
         if (!Objects.equals(tipoEquipamento, that.tipoEquipamento))
             return false;
         if (!Objects.equals(descricao, that.descricao)) return false;
-        return Objects.equals(estado, that.estado);
+        if (!Objects.equals(estado, that.estado)) return false;
+        return Objects.equals(listaDemanutencoes, that.listaDemanutencoes);
     }
 
     @Override
@@ -46,7 +48,16 @@ public class Equipamennto {
         result = 31 * result + (tipoEquipamento != null ? tipoEquipamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
+        result = 31 * result + (listaDemanutencoes != null ? listaDemanutencoes.hashCode() : 0);
         return result;
+    }
+
+    public List<Manutencao> getListaDemanutencoes() {
+        return listaDemanutencoes;
+    }
+
+    public void setListaDemanutencoes(List<Manutencao> listaDemanutencoes) {
+        this.listaDemanutencoes = listaDemanutencoes;
     }
 
     public Long getIdEquipameto() {
@@ -88,6 +99,7 @@ public class Equipamennto {
                 ", tipoEquipamento='" + tipoEquipamento + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", estado='" + estado + '\'' +
+                ", listaDemanutencoes=" + listaDemanutencoes +
                 '}';
     }
 }
