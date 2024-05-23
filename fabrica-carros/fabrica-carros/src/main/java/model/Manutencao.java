@@ -1,9 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,15 +10,16 @@ public class Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idManutencao;
-    private Long idEquipamento;
+    @ManyToMany
+    private Equipamennto equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dateHoraFim;
     private String descricaoServico;
     private String estado;
 
-    public Manutencao(Long idManutencao, Long idEquipamento, LocalDateTime dataHoraInicio, LocalDateTime dateHoraFim, String descricaoServico, String estado) {
+    public Manutencao(Long idManutencao, Equipamennto idEquipamento, LocalDateTime dataHoraInicio, LocalDateTime dateHoraFim, String descricaoServico, String estado) {
         this.idManutencao = idManutencao;
-        this.idEquipamento = idEquipamento;
+        this.equipamento = idEquipamento;
         this.dataHoraInicio = dataHoraInicio;
         this.dateHoraFim = dateHoraFim;
         this.descricaoServico = descricaoServico;
@@ -39,12 +37,12 @@ public class Manutencao {
         this.idManutencao = idManutencao;
     }
 
-    public Long getIdEquipamento() {
-        return idEquipamento;
+    public Equipamennto getIdEquipamento() {
+        return equipamento;
     }
 
-    public void setIdEquipamento(Long idEquipamento) {
-        this.idEquipamento = idEquipamento;
+    public void setIdEquipamento(Equipamennto idEquipamento) {
+        this.equipamento = idEquipamento;
     }
 
     public LocalDateTime getDataHoraInicio() {
@@ -87,7 +85,7 @@ public class Manutencao {
         Manutencao that = (Manutencao) o;
 
         if (!idManutencao.equals(that.idManutencao)) return false;
-        if (!Objects.equals(idEquipamento, that.idEquipamento)) return false;
+        if (!Objects.equals(equipamento, that.equipamento)) return false;
         if (!Objects.equals(dataHoraInicio, that.dataHoraInicio)) return false;
         if (!Objects.equals(dateHoraFim, that.dateHoraFim)) return false;
         if (!Objects.equals(descricaoServico, that.descricaoServico)) return false;
@@ -97,7 +95,7 @@ public class Manutencao {
     @Override
     public int hashCode() {
         int result = idManutencao.hashCode();
-        result = 31 * result + (idEquipamento != null ? idEquipamento.hashCode() : 0);
+        result = 31 * result + (equipamento != null ? equipamento.hashCode() : 0);
         result = 31 * result + (dataHoraInicio != null ? dataHoraInicio.hashCode() : 0);
         result = 31 * result + (dateHoraFim != null ? dateHoraFim.hashCode() : 0);
         result = 31 * result + (descricaoServico != null ? descricaoServico.hashCode() : 0);
@@ -107,6 +105,6 @@ public class Manutencao {
 
     @Override
     public String toString() {
-        return "Manutencao{" + "idManutencao=" + idManutencao + ", idEquipamento=" + idEquipamento + ", dataHoraInicio=" + dataHoraInicio + ", dateHoraFim=" + dateHoraFim + ", descricaoServico='" + descricaoServico + '\'' + ", estado='" + estado + '\'' + '}';
+        return "Manutencao{" + "idManutencao=" + idManutencao + ", idEquipamento=" + equipamento + ", dataHoraInicio=" + dataHoraInicio + ", dateHoraFim=" + dateHoraFim + ", descricaoServico='" + descricaoServico + '\'' + ", estado='" + estado + '\'' + '}';
     }
 }
