@@ -14,6 +14,7 @@ public class Equipamento {
     private String descricao;
     private String estado;
     @OneToMany(mappedBy = "equipamento")
+    @JoinColumn (name = "idEquipamento", referencedColumnName = "idEquipamento")
     private List<Manutencao> listaDemanutencoes;
 
     public Equipamento(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
