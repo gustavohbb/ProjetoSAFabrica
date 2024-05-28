@@ -1,9 +1,8 @@
-package model;
+package br.com.senai.sa2semestre.fabricacarros.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 @Entity
 public class Manutencao {
@@ -11,13 +10,13 @@ public class Manutencao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idManutencao;
     @ManyToMany
-    private Equipamennto equipamento;
+    private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dateHoraFim;
     private String descricaoServico;
     private String estado;
 
-    public Manutencao(Long idManutencao, Equipamennto idEquipamento, LocalDateTime dataHoraInicio, LocalDateTime dateHoraFim, String descricaoServico, String estado) {
+    public Manutencao(Long idManutencao, Equipamento idEquipamento, LocalDateTime dataHoraInicio, LocalDateTime dateHoraFim, String descricaoServico, String estado) {
         this.idManutencao = idManutencao;
         this.equipamento = idEquipamento;
         this.dataHoraInicio = dataHoraInicio;
@@ -37,11 +36,11 @@ public class Manutencao {
         this.idManutencao = idManutencao;
     }
 
-    public Equipamennto getIdEquipamento() {
+    public Equipamento getIdEquipamento() {
         return equipamento;
     }
 
-    public void setIdEquipamento(Equipamennto idEquipamento) {
+    public void setIdEquipamento(Equipamento idEquipamento) {
         this.equipamento = idEquipamento;
     }
 

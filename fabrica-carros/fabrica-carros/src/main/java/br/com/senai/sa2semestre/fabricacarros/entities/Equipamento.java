@@ -1,4 +1,4 @@
-package model;
+package br.com.senai.sa2semestre.fabricacarros.entities;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Equipamennto {
+public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipameto;
@@ -16,7 +16,7 @@ public class Equipamennto {
     @OneToMany(mappedBy = "equipamento")
     private List<Manutencao> listaDemanutencoes;
 
-    public Equipamennto(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
+    public Equipamento(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
         this.idEquipameto = idEquipameto;
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
@@ -24,7 +24,7 @@ public class Equipamennto {
         this.listaDemanutencoes = listaDemanutencoes;
     }
 
-    public Equipamennto() {
+    public Equipamento() {
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Equipamennto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Equipamennto that = (Equipamennto) o;
+        Equipamento that = (Equipamento) o;
 
         if (!idEquipameto.equals(that.idEquipameto)) return false;
         if (!Objects.equals(tipoEquipamento, that.tipoEquipamento))
