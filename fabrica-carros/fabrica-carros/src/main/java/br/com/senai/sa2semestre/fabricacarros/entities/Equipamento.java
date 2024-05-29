@@ -9,16 +9,15 @@ import java.util.Objects;
 public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEquipameto;
+    private Long idEquipamento;
     private String tipoEquipamento;
     private String descricao;
     private String estado;
     @OneToMany(mappedBy = "equipamento")
-    @JoinColumn (name = "idEquipamento", referencedColumnName = "idEquipamento")
     private List<Manutencao> listaDemanutencoes;
 
     public Equipamento(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
-        this.idEquipameto = idEquipameto;
+        this.idEquipamento = idEquipameto;
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
         this.estado = estado;
@@ -35,7 +34,7 @@ public class Equipamento {
 
         Equipamento that = (Equipamento) o;
 
-        if (!idEquipameto.equals(that.idEquipameto)) return false;
+        if (!idEquipamento.equals(that.idEquipamento)) return false;
         if (!Objects.equals(tipoEquipamento, that.tipoEquipamento))
             return false;
         if (!Objects.equals(descricao, that.descricao)) return false;
@@ -45,7 +44,7 @@ public class Equipamento {
 
     @Override
     public int hashCode() {
-        int result = idEquipameto.hashCode();
+        int result = idEquipamento.hashCode();
         result = 31 * result + (tipoEquipamento != null ? tipoEquipamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
@@ -62,11 +61,11 @@ public class Equipamento {
     }
 
     public Long getIdEquipameto() {
-        return idEquipameto;
+        return idEquipamento;
     }
 
     public void setIdEquipameto(Long idEquipameto) {
-        this.idEquipameto = idEquipameto;
+        this.idEquipamento = idEquipameto;
     }
 
     public String getTipoEquipamento() {
@@ -96,7 +95,7 @@ public class Equipamento {
     @Override
     public String toString() {
         return "Equipamennto{" +
-                "idEquipameto=" + idEquipameto +
+                "idEquipameto=" + idEquipamento +
                 ", tipoEquipamento='" + tipoEquipamento + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", estado='" + estado + '\'' +

@@ -9,7 +9,8 @@ public class Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idManutencao;
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn (name = "idEquipamento", referencedColumnName = "idEquipamento")
     private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dateHoraFim;
