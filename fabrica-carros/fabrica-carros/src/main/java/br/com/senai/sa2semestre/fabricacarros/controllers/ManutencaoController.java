@@ -22,8 +22,8 @@ public class ManutencaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Manutencao> getManutencaoById(@PathVariable Long idParaBuscar) {
-        Optional<Manutencao> manutencaoBuscada = manutencaoRepository.findById(idParaBuscar);
+    public ResponseEntity<Manutencao> getManutencaoById(@PathVariable Long id) {
+        Optional<Manutencao> manutencaoBuscada = manutencaoRepository.findById(id);
         return  manutencaoBuscada.map(ResponseEntity:: ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
     @PostMapping
@@ -41,8 +41,8 @@ public class ManutencaoController {
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteManutencao (@PathVariable Long idDoObjetoParaDeleetar) {
-        Optional<Manutencao> manutencaoParaDeletar = manutencaoRepository.findById(idDoObjetoParaDeleetar);
+    public ResponseEntity<Void> deleteManutencao (@PathVariable Long id) {
+        Optional<Manutencao> manutencaoParaDeletar = manutencaoRepository.findById(id);
         if (manutencaoParaDeletar.isPresent()) {
             manutencaoRepository.delete(manutencaoParaDeletar.get());
             return ResponseEntity.noContent().build();
