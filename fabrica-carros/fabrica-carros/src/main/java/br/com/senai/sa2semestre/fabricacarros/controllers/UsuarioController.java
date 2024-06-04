@@ -20,7 +20,7 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
         Optional<Usuario> usuarioBuscado = usuarioRepository.findById(id);
         return usuarioBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -31,7 +31,7 @@ public class UsuarioController {
         return usuarioRepository.save(usuario);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
         if (usuarioExistente.isPresent()) {
@@ -41,7 +41,7 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }
     }
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
         Optional<Usuario> usuarioParaDeletar = usuarioRepository.findById(id);
         if (usuarioParaDeletar.isPresent()) {
