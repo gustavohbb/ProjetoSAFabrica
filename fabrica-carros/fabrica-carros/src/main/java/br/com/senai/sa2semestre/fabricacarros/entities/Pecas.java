@@ -3,6 +3,7 @@ package br.com.senai.sa2semestre.fabricacarros.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,16 +14,22 @@ public class Pecas {
     private Long idPecas;
     private String nome;
     private String descricao;
+    private Long quantidade;
     @OneToMany(mappedBy = "pecas")
-    private Estoque estoque;
+    private List<Estoque> listaDeEstoque;
+    @OneToMany(mappedBy = "pecas")
+    private  List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
     private Set<Veiculo> veiculos = new HashSet<>();
 
-    public Pecas(Long idPecas, String nome, String descricao, Estoque estoque) {
+    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
-        this.estoque = estoque;
+        this.quantidade = quantidade;
+        this.listaDeEstoque = listaDeEstoque;
+        this.listaDeProducao = listaDeProducao;
+        this.veiculos = veiculos;
     }
 
     public Pecas() {
@@ -52,12 +59,36 @@ public class Pecas {
         this.descricao = descricao;
     }
 
-    public Estoque getEstoque() {
-        return estoque;
+    public Long getQuantidade() {
+        return quantidade;
     }
 
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
+    public void setQuantidade(Long quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public List<Estoque> getListaDeEstoque() {
+        return listaDeEstoque;
+    }
+
+    public void setListaDeEstoque(List<Estoque> listaDeEstoque) {
+        this.listaDeEstoque = listaDeEstoque;
+    }
+
+    public List<Producao> getListaDeProducao() {
+        return listaDeProducao;
+    }
+
+    public void setListaDeProducao(List<Producao> listaDeProducao) {
+        this.listaDeProducao = listaDeProducao;
+    }
+
+    public Set<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(Set<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 
     @Override
@@ -65,12 +96,12 @@ public class Pecas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pecas pecas = (Pecas) o;
-        return idPecas.equals(pecas.idPecas) && Objects.equals(nome, pecas.nome) && Objects.equals(descricao, pecas.descricao) && Objects.equals(estoque, pecas.estoque);
+        return idPecas.equals(pecas.idPecas) && Objects.equals(nome, pecas.nome) && Objects.equals(descricao, pecas.descricao) && Objects.equals(quantidade, pecas.quantidade) && Objects.equals(listaDeEstoque, pecas.listaDeEstoque) && Objects.equals(listaDeProducao, pecas.listaDeProducao) && Objects.equals(veiculos, pecas.veiculos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPecas, nome, descricao, estoque);
+        return Objects.hash(idPecas, nome, descricao, quantidade, listaDeEstoque, listaDeProducao, veiculos);
     }
 
     @Override
@@ -79,7 +110,10 @@ public class Pecas {
                 "idPecas=" + idPecas +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", estoque=" + estoque +
+                ", quantidade=" + quantidade +
+                ", listaDeEstoque=" + listaDeEstoque +
+                ", listaDeProducao=" + listaDeProducao +
+                ", veiculos=" + veiculos +
                 '}';
     }
 }
