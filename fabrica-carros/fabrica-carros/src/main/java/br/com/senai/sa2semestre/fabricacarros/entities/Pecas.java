@@ -18,7 +18,7 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas")
     private List<Estoque> listaDeEstoque;
     @OneToMany(mappedBy = "pecas")
-    private  List<Producao> listaDeProducao;
+    private List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
     private Set<Veiculo> veiculos = new HashSet<>();
 
@@ -95,13 +95,30 @@ public class Pecas {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Pecas pecas = (Pecas) o;
-        return idPecas.equals(pecas.idPecas) && Objects.equals(nome, pecas.nome) && Objects.equals(descricao, pecas.descricao) && Objects.equals(quantidade, pecas.quantidade) && Objects.equals(listaDeEstoque, pecas.listaDeEstoque) && Objects.equals(listaDeProducao, pecas.listaDeProducao) && Objects.equals(veiculos, pecas.veiculos);
+
+        if (!idPecas.equals(pecas.idPecas)) return false;
+        if (!Objects.equals(nome, pecas.nome)) return false;
+        if (!Objects.equals(descricao, pecas.descricao)) return false;
+        if (!Objects.equals(quantidade, pecas.quantidade)) return false;
+        if (!Objects.equals(listaDeEstoque, pecas.listaDeEstoque))
+            return false;
+        if (!Objects.equals(listaDeProducao, pecas.listaDeProducao))
+            return false;
+        return Objects.equals(veiculos, pecas.veiculos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPecas, nome, descricao, quantidade, listaDeEstoque, listaDeProducao, veiculos);
+        int result = idPecas.hashCode();
+        result = 31 * result + (nome != null ? nome.hashCode() : 0);
+        result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
+        result = 31 * result + (quantidade != null ? quantidade.hashCode() : 0);
+        result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
+        result = 31 * result + (listaDeProducao != null ? listaDeProducao.hashCode() : 0);
+        result = 31 * result + (veiculos != null ? veiculos.hashCode() : 0);
+        return result;
     }
 
     @Override

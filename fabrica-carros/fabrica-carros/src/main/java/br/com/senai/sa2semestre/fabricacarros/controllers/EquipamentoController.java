@@ -14,8 +14,10 @@ import java.util.Optional;
 public class EquipamentoController {
     @Autowired
     private EquipamentoRepository equipamentoRepository;
+
     /**
      * Obtém todos os equipamentos.
+     *
      * @return uma lista de equipamentos.
      */
     @GetMapping
@@ -25,6 +27,7 @@ public class EquipamentoController {
 
     /**
      * Obtém um equipamento por ID.
+     *
      * @param id o ID do equipamento.
      * @return o equipamento com o ID especificado.
      */
@@ -37,6 +40,7 @@ public class EquipamentoController {
 
     /**
      * Cria um novo equipamento.
+     *
      * @param equipamento o novo equipamento.
      * @return o equipamento criado.
      */
@@ -47,7 +51,8 @@ public class EquipamentoController {
 
     /**
      * Atualiza um equipamento existente.
-     * @param id o ID do equipamento a ser atualizado.
+     *
+     * @param id                             o ID do equipamento a ser atualizado.
      * @param equipamentoComDadosAtualizados os novos dados do equipamento.
      * @return o equipamento atualizado.
      */
@@ -65,6 +70,7 @@ public class EquipamentoController {
 
     /**
      * Exclui um equipamento por ID.
+     *
      * @param id o ID do equipamento a ser excluído.
      * @return uma resposta indicando o sucesso ou falha da operação.
      */
