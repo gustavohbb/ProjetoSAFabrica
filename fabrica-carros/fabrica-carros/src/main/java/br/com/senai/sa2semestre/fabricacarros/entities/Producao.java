@@ -84,13 +84,28 @@ public class Producao {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Producao producao = (Producao) o;
-        return idProducao.equals(producao.idProducao) && Objects.equals(datahora, producao.datahora) && Objects.equals(pecas, producao.pecas) && Objects.equals(listaDeQualidade, producao.listaDeQualidade) && Objects.equals(quantidadeProduzida, producao.quantidadeProduzida) && Objects.equals(estado, producao.estado);
+
+        if (!idProducao.equals(producao.idProducao)) return false;
+        if (!Objects.equals(datahora, producao.datahora)) return false;
+        if (!Objects.equals(pecas, producao.pecas)) return false;
+        if (!Objects.equals(listaDeQualidade, producao.listaDeQualidade))
+            return false;
+        if (!Objects.equals(quantidadeProduzida, producao.quantidadeProduzida))
+            return false;
+        return Objects.equals(estado, producao.estado);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProducao, datahora, pecas, listaDeQualidade, quantidadeProduzida, estado);
+        int result = idProducao.hashCode();
+        result = 31 * result + (datahora != null ? datahora.hashCode() : 0);
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
+        result = 31 * result + (listaDeQualidade != null ? listaDeQualidade.hashCode() : 0);
+        result = 31 * result + (quantidadeProduzida != null ? quantidadeProduzida.hashCode() : 0);
+        result = 31 * result + (estado != null ? estado.hashCode() : 0);
+        return result;
     }
 
     @Override
