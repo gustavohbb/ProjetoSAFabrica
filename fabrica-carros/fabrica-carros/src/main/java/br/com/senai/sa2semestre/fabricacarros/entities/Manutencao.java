@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+/**
+ * Classe que representa uma manutenção com identificador, equipamento usado, data e hora de inicio, data e hora do fim, descrição e estado.
+ */
 @Entity
 public class Manutencao {
     @Id

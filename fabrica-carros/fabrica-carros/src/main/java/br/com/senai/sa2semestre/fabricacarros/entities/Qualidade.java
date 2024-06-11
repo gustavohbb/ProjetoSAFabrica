@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Classe que representa a Inspeção com identificador da inspeção, idetificador da produção, data e hora, resultado ecometarios.
+ */
 @Entity
 public class Qualidade {
     @Id

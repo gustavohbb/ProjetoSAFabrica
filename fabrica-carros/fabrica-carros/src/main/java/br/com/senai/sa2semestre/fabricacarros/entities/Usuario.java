@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 
 import java.util.Objects;
 
+/**
+ * Classe que representa um usuario com identificador, nome, email, senha e perfil.
+ */
 @Entity
 public class Usuario {
     @Id

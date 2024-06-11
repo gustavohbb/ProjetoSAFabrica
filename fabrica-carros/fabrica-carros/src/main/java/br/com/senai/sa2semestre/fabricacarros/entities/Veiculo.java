@@ -6,11 +6,14 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Classe que representa um veiculo com chassi, modelo, ano, cor e peças.
+ */
 @Entity
 public class Veiculo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chassi;
+    @Column(name = "chassi", unique = true)
+    private String chassi;
     private String modelo;
     private int ano;
     private String cor;
@@ -22,7 +25,7 @@ public class Veiculo {
     )
     private Set<Pecas> pecas = new HashSet<>();
 
-    public Veiculo(Long chassi, String modelo, int ano, String cor, Set<Pecas> pecas) {
+    public Veiculo(String chassi, String modelo, int ano, String cor, Set<Pecas> pecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
@@ -33,11 +36,11 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public Long getChassi() {
+    public String getChassi() {
         return chassi;
     }
 
-    public void setChassi(Long chassi) {
+    public void setChassi(String chassi) {
         this.chassi = chassi;
     }
 

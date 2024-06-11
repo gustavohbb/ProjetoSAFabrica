@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Classe que representa peças de um veiculo com identificador, nome, descrição e quantidade.
+ */
 @Entity
 public class Pecas {
     @Id

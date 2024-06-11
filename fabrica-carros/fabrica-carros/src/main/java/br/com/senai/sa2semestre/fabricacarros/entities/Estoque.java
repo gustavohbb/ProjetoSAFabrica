@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+/**
+ * Classe que representa um estoque com um indetificador, peças e quantidade disponivel.
+ */
 @Entity
 public class Estoque {
     @Id

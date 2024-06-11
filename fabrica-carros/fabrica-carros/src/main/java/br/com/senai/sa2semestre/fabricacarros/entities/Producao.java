@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Classe que representa a produção co  identificador, data e hora, peças, quantidade produzida e estado.
+ */
 @Entity
 public class Producao {
     @Id

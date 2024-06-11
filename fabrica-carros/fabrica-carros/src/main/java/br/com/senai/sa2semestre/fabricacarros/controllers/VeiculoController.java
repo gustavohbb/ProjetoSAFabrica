@@ -15,36 +15,66 @@ public class VeiculoController {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
+    /**
+     * Obtém todos os Veiculos.
+     *
+     * @return uma lista de Veiculo.
+     */
     @GetMapping
     public List<Veiculo> getAllVeiculo() {
         return veiculoRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Veiculo> getVeiculoById(@PathVariable Long id) {
-        Optional<Veiculo> veiculoBuscado = veiculoRepository.findById(id);
+    /**
+     * Obtém um Veiculo por ID.
+     *
+     * @param chassi o ID do Veiculo.
+     * @return o Veiculo com o ID especificado.
+     */
+    @GetMapping("/{chassi}")
+    public ResponseEntity<Veiculo> getVeiculoById(@PathVariable String chassi) {
+        Optional<Veiculo> veiculoBuscado = veiculoRepository.findById(chassi);
         return veiculoBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    /**
+     * Cria um novo Veiculo.
+     *
+     * @param veiculo o novo Veiculo.
+     * @return o Veiculo criada.
+     */
     @PostMapping
     public Veiculo createVeiculo(@RequestBody Veiculo veiculo) {
         return veiculoRepository.save(veiculo);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Veiculo> updateVeiculo(@PathVariable Long id, @RequestBody Veiculo veiculo) {
-        Optional<Veiculo> veiculoExistente = veiculoRepository.findById(id);
+    /**
+     * Atualiza um Veiculo existente.
+     *
+     * @param chassi            o ID do Veiculo a ser atualizada.
+     * @param veiculoAtualizado novos dados do Veiculo.
+     * @return o Veiculo atualizado.
+     */
+    @PutMapping("/{chassi}")
+    public ResponseEntity<Veiculo> updateVeiculo(@PathVariable String chassi, @RequestBody Veiculo veiculoAtualizado) {
+        Optional<Veiculo> veiculoExistente = veiculoRepository.findById(chassi);
         if (veiculoExistente.isPresent()) {
-            veiculo.setChassi(id);
-            return ResponseEntity.ok(veiculoRepository.save(veiculo));
+            veiculoAtualizado.setChassi(chassi);
+            return ResponseEntity.ok(veiculoRepository.save(veiculoAtualizado));
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteVeiculo(@PathVariable Long id) {
-        Optional<Veiculo> veiculoParaDeletar = veiculoRepository.findById(id);
+    /**
+     * Exclui um Veiculo por ID.
+     *
+     * @param chassi o ID do Veiculo a ser excluída.
+     * @return uma resposta indicando o sucesso ou falha da operação.
+     */
+    @DeleteMapping("/{chassi}")
+    public ResponseEntity<Void> deleteVeiculo(@PathVariable String chassi) {
+        Optional<Veiculo> veiculoParaDeletar = veiculoRepository.findById(chassi);
         if (veiculoParaDeletar.isPresent()) {
             veiculoRepository.delete(veiculoParaDeletar.get());
             return ResponseEntity.noContent().build();
