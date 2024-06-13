@@ -80,13 +80,24 @@ public class Veiculo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Veiculo veiculo = (Veiculo) o;
-        return ano == veiculo.ano && chassi.equals(veiculo.chassi) && Objects.equals(modelo, veiculo.modelo) && Objects.equals(cor, veiculo.cor) && Objects.equals(pecas, veiculo.pecas);
+
+        if (ano != veiculo.ano) return false;
+        if (!chassi.equals(veiculo.chassi)) return false;
+        if (!Objects.equals(modelo, veiculo.modelo)) return false;
+        if (!Objects.equals(cor, veiculo.cor)) return false;
+        return Objects.equals(pecas, veiculo.pecas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chassi, modelo, ano, cor, pecas);
+        int result = chassi.hashCode();
+        result = 31 * result + (modelo != null ? modelo.hashCode() : 0);
+        result = 31 * result + ano;
+        result = 31 * result + (cor != null ? cor.hashCode() : 0);
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
+        return result;
     }
 
     @Override

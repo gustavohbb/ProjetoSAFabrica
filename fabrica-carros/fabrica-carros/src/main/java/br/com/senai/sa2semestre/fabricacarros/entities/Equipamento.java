@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +17,8 @@ public class Equipamento {
     private String tipoEquipamento;
     private String descricao;
     private String estado;
-    @OneToMany(mappedBy = "equipamento")
+    @OneToMany(mappedBy = "equipamento", cascade = {CascadeType.ALL})
+    @JsonIgnore
     private List<Manutencao> listaDemanutencoes;
 
     public Equipamento(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {

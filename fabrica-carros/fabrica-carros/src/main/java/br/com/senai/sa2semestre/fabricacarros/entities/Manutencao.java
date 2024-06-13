@@ -1,6 +1,8 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.lang.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

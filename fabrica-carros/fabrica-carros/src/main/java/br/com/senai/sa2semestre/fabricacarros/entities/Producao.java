@@ -18,7 +18,7 @@ public class Producao {
     @ManyToOne
     @JoinColumn(name = "IdPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
-    @OneToMany(mappedBy = "producao")
+    @OneToMany(mappedBy = "producao", cascade = {CascadeType.ALL})
     private List<Qualidade> listaDeQualidade;
     private Long quantidadeProduzida;
     private String estado;

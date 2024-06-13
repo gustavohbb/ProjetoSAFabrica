@@ -54,13 +54,20 @@ public class Estoque {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Estoque estoque = (Estoque) o;
-        return quantidadeDisponivel == estoque.quantidadeDisponivel && id.equals(estoque.id) && Objects.equals(pecas, estoque.pecas);
+
+        if (quantidadeDisponivel != estoque.quantidadeDisponivel) return false;
+        if (!id.equals(estoque.id)) return false;
+        return Objects.equals(pecas, estoque.pecas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pecas, quantidadeDisponivel);
+        int result = id.hashCode();
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
+        result = 31 * result + quantidadeDisponivel;
+        return result;
     }
 
     @Override

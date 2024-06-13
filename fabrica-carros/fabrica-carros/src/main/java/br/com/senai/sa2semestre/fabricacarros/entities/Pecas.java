@@ -18,9 +18,9 @@ public class Pecas {
     private String nome;
     private String descricao;
     private Long quantidade;
-    @OneToMany(mappedBy = "pecas")
+    @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "pecas")
+    @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
     private List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
     private Set<Veiculo> veiculos = new HashSet<>();
