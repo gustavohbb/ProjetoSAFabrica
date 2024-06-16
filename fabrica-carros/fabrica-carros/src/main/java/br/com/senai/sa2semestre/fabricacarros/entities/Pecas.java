@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
     private List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
+    @JsonIgnore
     private Set<Veiculo> veiculos = new HashSet<>();
 
     public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {

@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ public class Producao {
     private Long idProducao;
     private LocalDateTime datahora;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "IdPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
     @OneToMany(mappedBy = "producao", cascade = {CascadeType.ALL})

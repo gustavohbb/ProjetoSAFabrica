@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class Estoque {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
+    @JsonIgnore
     private Pecas pecas;
     private int quantidadeDisponivel;
 

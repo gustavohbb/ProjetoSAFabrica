@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.lang.NonNull;
@@ -17,6 +18,7 @@ public class Manutencao {
     private Long idManutencao;
     @ManyToOne
     @JoinColumn (name = "idEquipamento", referencedColumnName = "idEquipamento")
+    @JsonIgnore
     private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dateHoraFim;

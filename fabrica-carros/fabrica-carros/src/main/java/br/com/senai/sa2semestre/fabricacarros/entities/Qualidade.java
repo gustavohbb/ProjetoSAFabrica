@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class Qualidade {
     private Long idInspecao;
     @ManyToOne
     @JoinColumn(name = "idProducao", referencedColumnName = "idProducao")
+    @JsonIgnore
     private Producao producao;
     private LocalDateTime DataHora;
     private String resultado;
