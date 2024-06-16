@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/manutencao")
+@RequestMapping("/manutencaoes")
 public class ManutencaoController {
     @Autowired
     private ManutencaoRepository manutencaoRepository;
