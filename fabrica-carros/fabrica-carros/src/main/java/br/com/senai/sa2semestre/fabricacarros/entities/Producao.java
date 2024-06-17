@@ -20,11 +20,20 @@ public class Producao {
     @JsonIgnore
     @JoinColumn(name = "IdPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
-    @OneToMany(mappedBy = "producao", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "producao")
     private List<Qualidade> listaDeQualidade;
     private Long quantidadeProduzida;
     private String estado;
 
+    /**
+     * Constroi o objeto produção
+     * @param idProducao Identificador da produção
+     * @param datahora   Data e hora da produção
+     * @param pecas  Peça sendo produzida
+     * @param listaDeQualidade Inspeção da produção
+     * @param quantidadeProduzida Quantidade produzida
+     * @param estado Estado da produção
+     */
     public Producao(Long idProducao, LocalDateTime datahora, Pecas pecas, List<Qualidade> listaDeQualidade, Long quantidadeProduzida, String estado) {
         this.idProducao = idProducao;
         this.datahora = datahora;
@@ -113,6 +122,10 @@ public class Producao {
         return result;
     }
 
+    /**
+     * Faz uma representação do objeto em formato de String
+     * @return Representção em formato de String
+     */
     @Override
     public String toString() {
         return "Producao{" +

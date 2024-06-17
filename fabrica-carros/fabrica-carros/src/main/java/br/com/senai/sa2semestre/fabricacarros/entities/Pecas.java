@@ -22,25 +22,25 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
     private List<Estoque> listaDeEstoque;
     @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
-    private List<Producao> listaDeProducao;
+    private List<Producao> producao;
     @ManyToMany(mappedBy = "pecas")
     @JsonIgnore
-    private Set<Veiculo> veiculos = new HashSet<>();
+    private List<Veiculo> veiculos;
 
-    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
+    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> producao, List<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.listaDeEstoque = listaDeEstoque;
-        this.listaDeProducao = listaDeProducao;
+        this.producao = producao;
         this.veiculos = veiculos;
     }
 
     public Pecas() {
     }
 
-    public Long getIdPecas() {
+    public Long idPecas() {
         return idPecas;
     }
 
@@ -48,7 +48,7 @@ public class Pecas {
         this.idPecas = idPecas;
     }
 
-    public String getNome() {
+    public String nome() {
         return nome;
     }
 
@@ -56,7 +56,7 @@ public class Pecas {
         this.nome = nome;
     }
 
-    public String getDescricao() {
+    public String descricao() {
         return descricao;
     }
 
@@ -64,7 +64,7 @@ public class Pecas {
         this.descricao = descricao;
     }
 
-    public Long getQuantidade() {
+    public Long quantidade() {
         return quantidade;
     }
 
@@ -72,7 +72,7 @@ public class Pecas {
         this.quantidade = quantidade;
     }
 
-    public List<Estoque> getListaDeEstoque() {
+    public List<Estoque> listaDeEstoque() {
         return listaDeEstoque;
     }
 
@@ -80,19 +80,19 @@ public class Pecas {
         this.listaDeEstoque = listaDeEstoque;
     }
 
-    public List<Producao> getListaDeProducao() {
-        return listaDeProducao;
+    public List<Producao> producao() {
+        return producao;
     }
 
-    public void setListaDeProducao(List<Producao> listaDeProducao) {
-        this.listaDeProducao = listaDeProducao;
+    public void setProducao(List<Producao> producao) {
+        this.producao = producao;
     }
 
-    public Set<Veiculo> getVeiculos() {
+    public List<Veiculo> veiculos() {
         return veiculos;
     }
 
-    public void setVeiculos(Set<Veiculo> veiculos) {
+    public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
 
@@ -109,8 +109,7 @@ public class Pecas {
         if (!Objects.equals(quantidade, pecas.quantidade)) return false;
         if (!Objects.equals(listaDeEstoque, pecas.listaDeEstoque))
             return false;
-        if (!Objects.equals(listaDeProducao, pecas.listaDeProducao))
-            return false;
+        if (!Objects.equals(producao, pecas.producao)) return false;
         return Objects.equals(veiculos, pecas.veiculos);
     }
 
@@ -121,7 +120,7 @@ public class Pecas {
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (quantidade != null ? quantidade.hashCode() : 0);
         result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
-        result = 31 * result + (listaDeProducao != null ? listaDeProducao.hashCode() : 0);
+        result = 31 * result + (producao != null ? producao.hashCode() : 0);
         result = 31 * result + (veiculos != null ? veiculos.hashCode() : 0);
         return result;
     }
@@ -134,7 +133,7 @@ public class Pecas {
                 ", descricao='" + descricao + '\'' +
                 ", quantidade=" + quantidade +
                 ", listaDeEstoque=" + listaDeEstoque +
-                ", listaDeProducao=" + listaDeProducao +
+                ", producao=" + producao +
                 ", veiculos=" + veiculos +
                 '}';
     }

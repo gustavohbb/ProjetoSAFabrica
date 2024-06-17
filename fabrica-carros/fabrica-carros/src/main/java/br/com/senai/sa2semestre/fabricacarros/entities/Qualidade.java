@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Classe que representa a Inspeção com identificador da inspeção, idetificador da produção, data e hora, resultado ecometarios.
+ * Classe que representa uma inspeção de qualidade com id, produção, dta e hora, resultado e comentarios.
  */
 @Entity
 public class Qualidade {
@@ -15,25 +15,25 @@ public class Qualidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idInspecao;
     @ManyToOne
-    @JoinColumn(name = "idProducao", referencedColumnName = "idProducao")
     @JsonIgnore
+    @JoinColumn(name = "idProducao", referencedColumnName = "idProducao")
     private Producao producao;
-    private LocalDateTime DataHora;
+    private LocalDateTime dataHora;
     private String resultado;
     private String comentarios;
-
-    public Qualidade(Long idInspecao, Producao producao, LocalDateTime dataHora, String resultado, String comentarios) {
-        this.idInspecao = idInspecao;
-        this.producao = producao;
-        DataHora = dataHora;
-        this.resultado = resultado;
-        this.comentarios = comentarios;
-    }
 
     public Qualidade() {
     }
 
-    public Long idInspecao() {
+    public Qualidade(Long idInspecao, Producao producao, LocalDateTime dataHora, String resultado, String comentarios) {
+        this.idInspecao = idInspecao;
+        this.producao = producao;
+        this.dataHora = dataHora;
+        this.resultado = resultado;
+        this.comentarios = comentarios;
+    }
+
+    public Long getIdInspecao() {
         return idInspecao;
     }
 
@@ -41,7 +41,7 @@ public class Qualidade {
         this.idInspecao = idInspecao;
     }
 
-    public Producao producao() {
+    public Producao getProducao() {
         return producao;
     }
 
@@ -49,15 +49,15 @@ public class Qualidade {
         this.producao = producao;
     }
 
-    public LocalDateTime DataHora() {
-        return DataHora;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
     public void setDataHora(LocalDateTime dataHora) {
-        DataHora = dataHora;
+        this.dataHora = dataHora;
     }
 
-    public String resultado() {
+    public String getResultado() {
         return resultado;
     }
 
@@ -65,7 +65,7 @@ public class Qualidade {
         this.resultado = resultado;
     }
 
-    public String comentarios() {
+    public String getComentarios() {
         return comentarios;
     }
 
@@ -82,7 +82,7 @@ public class Qualidade {
 
         if (!idInspecao.equals(qualidade.idInspecao)) return false;
         if (!Objects.equals(producao, qualidade.producao)) return false;
-        if (!Objects.equals(DataHora, qualidade.DataHora)) return false;
+        if (!Objects.equals(dataHora, qualidade.dataHora)) return false;
         if (!Objects.equals(resultado, qualidade.resultado)) return false;
         return Objects.equals(comentarios, qualidade.comentarios);
     }
@@ -91,9 +91,20 @@ public class Qualidade {
     public int hashCode() {
         int result = idInspecao.hashCode();
         result = 31 * result + (producao != null ? producao.hashCode() : 0);
-        result = 31 * result + (DataHora != null ? DataHora.hashCode() : 0);
+        result = 31 * result + (dataHora != null ? dataHora.hashCode() : 0);
         result = 31 * result + (resultado != null ? resultado.hashCode() : 0);
         result = 31 * result + (comentarios != null ? comentarios.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Qualidade{" +
+                "idInspecao=" + idInspecao +
+                ", producao=" + producao +
+                ", dataHora=" + dataHora +
+                ", resultado='" + resultado + '\'' +
+                ", comentarios='" + comentarios + '\'' +
+                '}';
     }
 }

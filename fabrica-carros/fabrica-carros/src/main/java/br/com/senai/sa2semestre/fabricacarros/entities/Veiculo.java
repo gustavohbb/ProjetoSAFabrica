@@ -3,6 +3,7 @@ package br.com.senai.sa2semestre.fabricacarros.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,9 +24,9 @@ public class Veiculo {
             joinColumns = {@JoinColumn(name = "chassi")},
             inverseJoinColumns = {@JoinColumn(name = "idPecas")}
     )
-    private Set<Pecas> pecas = new HashSet<>();
+    private List<Pecas> pecas;
 
-    public Veiculo(String chassi, String modelo, int ano, String cor, Set<Pecas> pecas) {
+    public Veiculo(String chassi, String modelo, int ano, String cor, List<Pecas> pecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
@@ -36,7 +37,7 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public String getChassi() {
+    public String chassi() {
         return chassi;
     }
 
@@ -44,7 +45,7 @@ public class Veiculo {
         this.chassi = chassi;
     }
 
-    public String getModelo() {
+    public String modelo() {
         return modelo;
     }
 
@@ -52,7 +53,7 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
-    public int getAno() {
+    public int ano() {
         return ano;
     }
 
@@ -60,7 +61,7 @@ public class Veiculo {
         this.ano = ano;
     }
 
-    public String getCor() {
+    public String cor() {
         return cor;
     }
 
@@ -68,11 +69,11 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public Set<Pecas> getPecas() {
+    public List<Pecas> pecas() {
         return pecas;
     }
 
-    public void setPecas(Set<Pecas> pecas) {
+    public void setPecas(List<Pecas> pecas) {
         this.pecas = pecas;
     }
 
@@ -103,7 +104,7 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Veiculo{" +
-                "chassi=" + chassi +
+                "chassi='" + chassi + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
                 ", cor='" + cor + '\'' +
