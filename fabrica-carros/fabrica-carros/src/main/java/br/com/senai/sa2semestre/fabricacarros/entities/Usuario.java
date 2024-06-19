@@ -20,6 +20,14 @@ public class Usuario {
     private String senha;
     private String perfil;
 
+    /**
+     * Cria uma instancia do Objeto usuario
+     * @param idUsuario Identificador unico
+     * @param nome Nome do usuario
+     * @param email Email do usuario
+     * @param senha Senha do usuario
+     * @param perfil perfil de acesso do usuario
+     */
     public Usuario(Long idUsuario, String nome, String email, String senha, String perfil) {
         this.idUsuario = idUsuario;
         this.nome = nome;
@@ -95,6 +103,11 @@ public class Usuario {
         return result;
     }
 
+    /**
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
+     */
     @Override
     public String toString() {
         return "Usuarios{" +

@@ -5,14 +5,13 @@ import br.com.senai.sa2semestre.fabricacarros.entities.Manutencao;
 import br.com.senai.sa2semestre.fabricacarros.repositories.ManutencaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/manutencaoes")
+@RequestMapping("/manutencoes")
 public class ManutencaoController {
     @Autowired
     private ManutencaoRepository manutencaoRepository;
@@ -46,7 +45,7 @@ public class ManutencaoController {
      * @return a Manutenção criado.
      */
     @PostMapping
-    public Manutencao createManutencao(@Validated @RequestBody Manutencao manutencao) {
+    public Manutencao createManutencao(@RequestBody Manutencao manutencao) {
         return manutencaoRepository.save(manutencao);
     }
 

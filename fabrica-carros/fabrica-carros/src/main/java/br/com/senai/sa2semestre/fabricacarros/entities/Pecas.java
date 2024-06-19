@@ -1,15 +1,12 @@
 package br.com.senai.sa2semestre.fabricacarros.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
- * Classe que representa peças de um veiculo com identificador, nome, descrição e quantidade.
+ * Classe Peça com as seguintes descricoes Id da Peca, Nome, Descricaoo e Quantidade.
  */
 @Entity
 public class Pecas {
@@ -24,9 +21,19 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas", cascade = {CascadeType.ALL})
     private List<Producao> producao;
     @ManyToMany(mappedBy = "pecas")
-    @JsonIgnore
     private List<Veiculo> veiculos;
 
+    /**
+     * Construtor para a classe Pecas.
+     *
+     * @param idPecas        O identificador único da peça.
+     * @param nome           O nome da peca.
+     * @param descricao      A descricao da peca.
+     * @param quantidade     A quantidade total da peca.
+     * @param listaDeEstoque A lista de estoques onde a peca está disponível.
+     * @param producao       A lista de producoes onde a peca é utilizada.
+     * @param veiculos       A lista de veiculos que utilizam a peça.
+     */
     public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> producao, List<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
@@ -40,7 +47,7 @@ public class Pecas {
     public Pecas() {
     }
 
-    public Long idPecas() {
+    public Long getIdPecas() {
         return idPecas;
     }
 
@@ -48,7 +55,7 @@ public class Pecas {
         this.idPecas = idPecas;
     }
 
-    public String nome() {
+    public String getNome() {
         return nome;
     }
 
@@ -56,7 +63,7 @@ public class Pecas {
         this.nome = nome;
     }
 
-    public String descricao() {
+    public String getDescricao() {
         return descricao;
     }
 
@@ -64,7 +71,7 @@ public class Pecas {
         this.descricao = descricao;
     }
 
-    public Long quantidade() {
+    public Long getQuantidade() {
         return quantidade;
     }
 
@@ -72,7 +79,7 @@ public class Pecas {
         this.quantidade = quantidade;
     }
 
-    public List<Estoque> listaDeEstoque() {
+    public List<Estoque> getListaDeEstoque() {
         return listaDeEstoque;
     }
 
@@ -80,7 +87,7 @@ public class Pecas {
         this.listaDeEstoque = listaDeEstoque;
     }
 
-    public List<Producao> producao() {
+    public List<Producao> getProducao() {
         return producao;
     }
 
@@ -88,7 +95,7 @@ public class Pecas {
         this.producao = producao;
     }
 
-    public List<Veiculo> veiculos() {
+    public List<Veiculo> getVeiculos() {
         return veiculos;
     }
 
@@ -125,6 +132,11 @@ public class Pecas {
         return result;
     }
 
+    /**
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
+     */
     @Override
     public String toString() {
         return "Pecas{" +

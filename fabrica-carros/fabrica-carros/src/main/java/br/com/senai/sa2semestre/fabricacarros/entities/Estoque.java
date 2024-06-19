@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 /**
- * Classe que representa um estoque com um indetificador, peças e quantidade disponivel.
+ * Classe que representa um estoque com um indetificador, pecas e quantidade disponivel.
  */
 @Entity
 public class Estoque {
@@ -19,6 +19,13 @@ public class Estoque {
     private Pecas pecas;
     private int quantidadeDisponivel;
 
+    /**
+     * Construtor para a classe Estoque.
+     *
+     * @param id                   O identificador único do estoque.
+     * @param pecas                A peça associada ao estoque.
+     * @param quantidadeDisponivel A quantidade disponivel da peca em estoque.
+     */
     public Estoque(Long id, Pecas pecas, int quantidadeDisponivel) {
         this.id = id;
         this.pecas = pecas;
@@ -72,6 +79,11 @@ public class Estoque {
         return result;
     }
 
+    /**
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
+     */
     @Override
     public String toString() {
         return "Estoque{" +

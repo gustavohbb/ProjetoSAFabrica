@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Classe que representa um equipamento com id, tipo, dscrição e estado.
+ * Classe que representa um equipamento com id, tipo, dscricao e estado.
  */
 @Entity
 public class Equipamento {
@@ -21,6 +21,15 @@ public class Equipamento {
     @JsonIgnore
     private List<Manutencao> listaDemanutencoes;
 
+    /**
+     * Construtor para a classe Equipamento.
+     *
+     * @param idEquipameto       O identificador unico do equipamento.
+     * @param tipoEquipamento    O tipo de equipamento.
+     * @param descricao          A descricao do equipamento.
+     * @param estado             O estado atual do equipamento.
+     * @param listaDemanutencoes A lista de manutencoess associadas ao equipamento.
+     */
     public Equipamento(Long idEquipameto, String tipoEquipamento, String descricao, String estado, List<Manutencao> listaDemanutencoes) {
         this.idEquipamento = idEquipameto;
         this.tipoEquipamento = tipoEquipamento;
@@ -97,6 +106,11 @@ public class Equipamento {
         this.estado = estado;
     }
 
+    /**
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
+     */
     @Override
     public String toString() {
         return "Equipamennto{" +

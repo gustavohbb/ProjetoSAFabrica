@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Classe que representa a produção co  identificador, data e hora, peças, quantidade produzida e estado.
+ * Classe que representa a producao co  identificador, data e hora, pecas, quantidade produzida e estado.
  */
 @Entity
 public class Producao {
@@ -26,13 +26,13 @@ public class Producao {
     private String estado;
 
     /**
-     * Constroi o objeto produção
-     * @param idProducao Identificador da produção
-     * @param datahora   Data e hora da produção
-     * @param pecas  Peça sendo produzida
-     * @param listaDeQualidade Inspeção da produção
+     * Constroi o objeto producao
+     * @param idProducao Identificador da producao
+     * @param datahora   Data e hora da producao
+     * @param pecas  Peca sendo produzida
+     * @param listaDeQualidade Inspeção da producao
      * @param quantidadeProduzida Quantidade produzida
-     * @param estado Estado da produção
+     * @param estado Estado da producao
      */
     public Producao(Long idProducao, LocalDateTime datahora, Pecas pecas, List<Qualidade> listaDeQualidade, Long quantidadeProduzida, String estado) {
         this.idProducao = idProducao;
@@ -123,8 +123,9 @@ public class Producao {
     }
 
     /**
-     * Faz uma representação do objeto em formato de String
-     * @return Representção em formato de String
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
      */
     @Override
     public String toString() {

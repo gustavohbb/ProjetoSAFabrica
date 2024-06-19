@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Classe que representa uma inspeção de qualidade com id, produção, dta e hora, resultado e comentarios.
+ * Classe que representa uma inspeção de qualidade com id, producao, data e hora, resultado e comentarios.
  */
 @Entity
 public class Qualidade {
@@ -25,6 +25,15 @@ public class Qualidade {
     public Qualidade() {
     }
 
+    /**
+     * Construtor para a classe Qualidade.
+     *
+     * @param idInspecao  O identificador único da inspecao de qualidade.
+     * @param producao    A produção associada à inspecao de qualidade.
+     * @param dataHora    A data e hora da inspecao.
+     * @param resultado   O resultado da inspecao de qualidade.
+     * @param comentarios Comentarios adicionais sobre a inspecao.
+     */
     public Qualidade(Long idInspecao, Producao producao, LocalDateTime dataHora, String resultado, String comentarios) {
         this.idInspecao = idInspecao;
         this.producao = producao;
@@ -97,6 +106,11 @@ public class Qualidade {
         return result;
     }
 
+    /**
+     * Faz uma representacao do objeto em formato de String
+     *
+     * @return Representcao em formato de String
+     */
     @Override
     public String toString() {
         return "Qualidade{" +
