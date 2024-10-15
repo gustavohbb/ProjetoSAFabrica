@@ -17,8 +17,7 @@ public class Equipamento {
     private String tipoEquipamento;
     private String descricao;
     private String estado;
-    @OneToMany(mappedBy = "equipamento", cascade = {CascadeType.ALL})
-    @JsonIgnore
+    @OneToMany(mappedBy = "equipamento", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Manutencao> listaDemanutencoes;
 
     /**
